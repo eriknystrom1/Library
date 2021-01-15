@@ -1,0 +1,93 @@
+﻿@model IEnumerable<Library.Models.BookUser>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<style>
+body { background-image: url("https://blog.prezi.com/wp-content/uploads/2019/04/02-light-blue-1024x768.jpg"); background-repeat: no-repeat; background-size: cover; }
+
+
+</style>
+<style>
+    body {
+        color: blue;
+        font-family: Verdana;
+    }
+
+    h1 {
+        color: red;
+    }
+</style>
+
+
+    <link rel="~/style.css" href="~/style.css" />
+    
+
+        <h1><b>Centrumbiblioteket</b></h1>
+
+<br />
+    
+    <h2><b>Försenade utlån</b></h2>
+
+    <p>
+
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    <b>
+                        Namn
+                    </b>
+                </th>
+                <th>
+                    <b>
+                        Telefonnummer
+                    </b>
+                </th>
+
+                <th>
+                    <b>
+                        Boktitel
+                    </b>
+                </th>
+                <th>
+                    <b>
+                        Lånedatum
+                    </b>
+                </th>
+                <th>
+                    <b>
+                        Returdatum
+                    </b>
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.User.FirstName)
+                        @Html.DisplayFor(modelItem => item.User.LastName)
+                    <td>
+                        @Html.DisplayFor(modelItem => item.User.Phone)
+
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Book.Title)
+                    </td>
+                    <td>
+
+                        @item.LoanDate.ToShortDateString()
+                    </td>
+                    <td>
+                        @item.ReturnDate.ToShortDateString()
+
+                    </td>
+                   
+                </tr>
+            }
+        </tbody>
+    </table>
